@@ -7,17 +7,24 @@ export const useFetch = (url) => {
 		fetched: false,
 	});
 
+
 	useEffect(() => {
-        if (!url) return;
-		fetch(url)
-			.then((response) => response.status === 200 && response.json())
-			.then((response) => {
-				setData({
-					data: response,
-					fetched: true,
-				});
-			});
-	}, [url]);
+
+		const getData = async () => {
+			try {
+				const response = await fetch(url);
+				if (response.status === 200) {
+					const data = await response.json();
+					setData({ data: data, fetched: true });
+				}
+			} catch (error) {
+				throw console.log(error);
+			}
+		};
+
+		url && getData();
+
+	},[url]);
 
 	return { data, setData };
 };

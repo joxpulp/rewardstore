@@ -4,8 +4,8 @@ import Header from './scenes/header/Header'
 function App() {
 	return (
 		<div className="App">
-      <GlobalStyle/>
-      <Header/>
+			<GlobalStyle />
+			<Header />
 		</div>
 	);
 }
