@@ -1,6 +1,7 @@
 import { useState, createContext } from 'react';
 import { useFetch } from '../hooks/useFetch';
 import { usePagination } from '../hooks/usePagination';
+import { useSort } from '../hooks/useSort';
 
 export const AppContext = createContext();
 
@@ -8,7 +9,6 @@ function AppProvider({ children }) {
 	const [amount, setAmount] = useState(0);
 	const [pointsModal, setPointsModal] = useState(false);
 	const [fetchPoints, setFetchPoints] = useState(false);
-
 	const headers = {
 		'Content-Type': 'application/json',
 		Accept: 'application/json',
@@ -35,7 +35,16 @@ function AppProvider({ children }) {
 		{ headers }
 	);
 
-	const { data: productList, totalItems, currentItems, nextPage, prevPage, currentPage } = usePagination(products.data, 16);
+	const { sortState: productsSorted, sortElements } = useSort(products.data);
+
+	const {
+		data: productList,
+		totalItems,
+		currentItems,
+		nextPage,
+		prevPage,
+		currentPage,
+	} = usePagination(productsSorted.data, 16);
 
 	return (
 		<AppContext.Provider
@@ -58,6 +67,7 @@ function AppProvider({ children }) {
 				nextPage,
 				prevPage,
 				currentPage,
+				sortElements,
 			}}
 		>
 			{children}
