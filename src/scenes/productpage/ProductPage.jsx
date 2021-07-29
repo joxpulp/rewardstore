@@ -47,6 +47,7 @@ function ProductPage() {
 							onClick={() => sortElements('default')}
 							fontSize='20px'
 							margin='0px 24px'
+							default
 						>
 							Most Recent
 						</ButtonGP>

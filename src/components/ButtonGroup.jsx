@@ -1,4 +1,4 @@
-import { useState, cloneElement } from 'react';
+import { useState, cloneElement, useEffect } from 'react';
 import { Button } from './buttons';
 
 const ButtonGroup = ({
@@ -20,7 +20,8 @@ const ButtonGroup = ({
 					key: index,
 					bgColor: activeButton === index ? activeBgColor : defaultBgColor,
 					color: activeButton === index ? activeColor : defaultColor,
-					focusActiveColor: activeButton === index ? activeBgColor : defaultBgColor,
+					focusActiveColor:
+						activeButton === index ? activeBgColor : defaultBgColor,
 					activeColor: activeColor,
 					activeBgColor: activeBgColor,
 					hoverGroup: hoverGroup,
@@ -32,20 +33,38 @@ const ButtonGroup = ({
 };
 
 const ButtonGP = (props) => {
+	const {
+		setActiveButton,
+		onClick,
+		defaultActive,
+		children,
+		focusColor,
+		activeBgColor,
+		activeColor,
+	} = props;
+
 	const handleClick = (e) => {
-		props.setActiveButton();
-		props.onClick(e);
+		setActiveButton();
+		onClick(e);
 	};
+
+	useEffect((e) => {
+		if (defaultActive) {
+			setActiveButton();
+			onClick(e);
+		}
+	}, [defaultActive, setActiveButton, onClick])
 
 	return (
 		<Button
 			{...props}
-			focusColor={props.focusColor && props.activeBgColor}
-			hoverBgColor={props.activeBgColor}
-			hoverColor={props.activeColor}
+			focusColor={focusColor && activeBgColor}
+			hoverBgColor={activeBgColor}
+			hoverColor={activeColor}
 			onClick={(e) => handleClick(e)}
+			defaultActive={defaultActive}
 		>
-			{props.children}
+			{children}
 		</Button>
 	);
 };

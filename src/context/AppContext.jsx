@@ -37,14 +37,7 @@ function AppProvider({ children }) {
 
 	const { sortState: productsSorted, sortElements } = useSort(products.data);
 
-	const {
-		data: productList,
-		totalItems,
-		currentItems,
-		nextPage,
-		prevPage,
-		currentPage,
-	} = usePagination(productsSorted.data, 16);
+	const { data: productList, totalItems, currentItems, nextPage, prevPage, currentPage } = usePagination(productsSorted.data, 16);
 
 	return (
 		<AppContext.Provider
