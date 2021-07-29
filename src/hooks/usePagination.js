@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-export const usePagination = (dataPassed = [], itemsPerPage) => {
+export const usePagination = (inputData = [], itemsPerPage) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [currentItems, setCurrentItems] = useState(itemsPerPage);
-	const totalPage = Math.ceil(dataPassed.length / itemsPerPage);
-	const totalItems = dataPassed.length;
+	const totalPage = Math.ceil(inputData.length / itemsPerPage);
+	const totalItems = inputData.length;
 	const start = (currentPage - 1) * itemsPerPage;
-	const data = dataPassed.slice(start, start + itemsPerPage);
+	const data = inputData.slice(start, start + itemsPerPage);
 
 	const nextPage = () => {
 		setCurrentPage((currentPage) => Math.min(currentPage + 1, totalPage));
