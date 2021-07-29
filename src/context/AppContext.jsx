@@ -1,14 +1,17 @@
 import { useState, createContext } from 'react';
 import { useFetch } from '../hooks/useFetch';
-import { usePagination } from '../hooks/usePagination';
-import { useSort } from '../hooks/useSort';
 
 export const AppContext = createContext();
 
 function AppProvider({ children }) {
 	const [amount, setAmount] = useState(0);
+	const [redeemId, setRedeemId] = useState('');
 	const [pointsModal, setPointsModal] = useState(false);
 	const [fetchPoints, setFetchPoints] = useState(false);
+	const [fetchRedeem, setFetchRedeem] = useState(false);
+	const [fetchHistory, setFetchHistory] = useState(false)
+	const [currentPoints, setCurrentPoints] = useState({ points: 0 });
+
 	const headers = {
 		'Content-Type': 'application/json',
 		Accept: 'application/json',
@@ -16,51 +19,55 @@ function AppProvider({ children }) {
 			'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRmMTU5MTY3Mjk2ZTAwMTk5NjQxMzYiLCJpYXQiOjE2MjUyMzI3ODV9.VtTEAHztgwB8UpIUoBf0pydVpIrEIRV8QoaqbXopJmQ',
 	};
 
-	const { data: user, setData: setUser } = useFetch(
+	const { data: user } = useFetch(
 		`https://private-eaac9f-aerolabchallenge.apiary-proxy.com/user/me`,
 		{ headers }
 	);
 
-	const { data: points } = useFetch(
+	const { data: points, setData: setPoints } = useFetch(
 		fetchPoints &&
 			`https://private-eaac9f-aerolabchallenge.apiary-proxy.com/user/points`,
 		{ method: 'POST', headers, body: JSON.stringify({ amount: amount }) }
 	);
 	const { data: redeem, setData: setRedeem } = useFetch(
-		`https://private-eaac9f-aerolabchallenge.apiary-proxy.com/redeem`,
-		{ method: 'POST', headers }
+		fetchRedeem &&
+			`https://private-eaac9f-aerolabchallenge.apiary-proxy.com/redeem`,
+		{ method: 'POST', headers, body: JSON.stringify({ productId: redeemId }) }
 	);
 	const { data: products, setData: setProducts } = useFetch(
 		`https://private-eaac9f-aerolabchallenge.apiary-proxy.com/products`,
 		{ headers }
 	);
 
-	const { sortState: productsSorted, sortElements } = useSort(products.data);
-
-	const { data: productList, totalItems, currentItems, nextPage, prevPage, currentPage } = usePagination(productsSorted.data, 16);
+	const { data: history } = useFetch( fetchHistory &&
+		`https://private-eaac9f-aerolabchallenge.apiary-proxy.com/user/history`,
+		{ headers }
+	);
 
 	return (
 		<AppContext.Provider
 			value={{
 				user,
-				setUser,
 				points,
 				redeem,
 				setRedeem,
-				productList,
+				products,
 				setProducts,
 				amount,
 				setAmount,
-				setFetchPoints,
+				setRedeemId,
 				fetchPoints,
+				setFetchPoints,
+				fetchRedeem,
+				setFetchRedeem,
 				pointsModal,
 				setPointsModal,
-				totalItems,
-				currentItems,
-				nextPage,
-				prevPage,
-				currentPage,
-				sortElements,
+				currentPoints,
+				setCurrentPoints,
+				setPoints,
+				history,
+				fetchHistory,
+				setFetchHistory
 			}}
 		>
 			{children}

@@ -1,4 +1,6 @@
 import { useContext } from 'react';
+import { useSort } from '../../hooks/useSort';
+import { usePagination } from '../../hooks/usePagination';
 import { AppContext } from '../../context/AppContext';
 import { Box } from '../../components/box';
 import { Text } from '../../components/text';
@@ -10,8 +12,17 @@ import ProductList from '../productlist/ProductList';
 import { AnimatePresence } from 'framer-motion';
 
 function ProductPage() {
-	const { currentPage, nextPage, prevPage, currentItems, totalItems, sortElements } =
-		useContext(AppContext);
+	const { products } = useContext(AppContext);
+
+	const { sortState: productsSorted, sortElements } = useSort(products.data);
+	const {
+		data: productList,
+		totalItems,
+		currentItems,
+		nextPage,
+		prevPage,
+		currentPage,
+	} = usePagination(productsSorted.data, 16);
 
 	return (
 		<Box
@@ -19,6 +30,9 @@ function ProductPage() {
 			alignItems='center'
 			justifyContent='center'
 			width='100%'
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1, transition: { delay: 0.5, duration: 0.5 } }}
+			exit={{ x: '-100%', transition: { ease: 'easeInOut' } }}
 		>
 			<Box
 				alignItems='center'
@@ -47,7 +61,7 @@ function ProductPage() {
 							onClick={() => sortElements('default')}
 							fontSize='20px'
 							margin='0px 24px'
-							default
+							defaultActive
 						>
 							Most Recent
 						</ButtonGP>
@@ -84,7 +98,7 @@ function ProductPage() {
 					<Image pointer onClick={() => nextPage()} src={arrowRight} />
 				</Box>
 			</Box>
-			<ProductList />
+			<ProductList productList={productList} />
 			<Box
 				mgBottom='64px'
 				justifyContent='space-between'

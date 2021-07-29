@@ -1,10 +1,27 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { Box } from '../../components/box';
 import ProductCard from '../productcard/ProductCard';
 
-function ProductList() {
-	const { productList, user } = useContext(AppContext);
+function ProductList({productList}) {
+	const {
+		setRedeemId,
+		fetchRedeem,
+		setFetchRedeem,
+		currentPoints,
+		setCurrentPoints
+	} = useContext(AppContext);
+
+	const handleRedeem = (id, cost, currentPoints ) => {
+		setRedeemId(id);
+		setFetchRedeem(true);
+		const userNewPoints = currentPoints - cost
+		setCurrentPoints({points: userNewPoints})
+	};
+
+	useEffect(() => {
+		fetchRedeem && setFetchRedeem(false);
+	});
 
 	return (
 		<Box
@@ -24,7 +41,10 @@ function ProductList() {
 					productCat={product.category}
 					productName={product.name}
 					productCost={product.cost}
-					userPoints={user.data.points}
+					currentPoints={currentPoints.points}
+					onClick={() =>
+						handleRedeem(product._id, product.cost, currentPoints.points)
+					}
 				/>
 			))}
 		</Box>

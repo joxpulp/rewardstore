@@ -1,5 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AppContext } from '../../context/AppContext';
+import { Link } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { HeaderStyles, Nav } from './headerstyles';
 import { Title } from '../../components/title';
@@ -13,43 +14,68 @@ import banner from '../../assets/header-x1.png';
 import Points from '../points/Points';
 
 function Header() {
-	const { user, points, pointsModal, setPointsModal, setUserModal } =
-		useContext(AppContext);
+	const {
+		user,
+		pointsModal,
+		setPointsModal,
+		currentPoints,
+		setCurrentPoints,
+		points,
+		setFetchHistory,
+		fetchHistory
+	} = useContext(AppContext);
+
+	useEffect(() => {
+		setCurrentPoints({ points: user.data.points });
+		//eslint-disable-next-line
+	}, [user.data.points]);
+
+	useEffect(() => {
+		points.fetched && setCurrentPoints({ points: points.data['New Points'] });
+		fetchHistory && setFetchHistory(false)
+		//eslint-disable-next-line
+	}, [points.fetched, fetchHistory]);
+
+	console.log(fetchHistory)
 
 	return (
 		<HeaderStyles>
 			<AnimatePresence>{pointsModal && <Points />}</AnimatePresence>
 			<Nav>
-				<Image
-					initial={{ x: -100, opacity: 0 }}
-					animate={{
-						x: 0,
-						opacity: 1,
-						transition: {
-							delay: 0.2,
-						},
-					}}
-					src={aerolablogo}
-					alt='aerolablogo'
-				/>
+				<Link to='/rewardstore'>
+					<Image
+						initial={{ x: -100, opacity: 0 }}
+						animate={{
+							x: 0,
+							opacity: 1,
+							transition: {
+								delay: 0.2,
+							},
+						}}
+						src={aerolablogo}
+						alt='aerolablogo'
+					/>
+				</Link>
 				<Box
 					height='48px'
 					alignItems='center'
 					justifyContent='flex-end'
 					color='#616161'
 				>
-					<Button
-						width='150px'
-						height='48px'
-						bgColor='transparent'
-						focusColor={colors.whiteColor}
-						margin='0 10px'
-						color='#616161'
-						focusScale
-						onClick={() => setUserModal(true)}
-					>
-						{user.data.name}
-					</Button>
+					<Link to='/userhistory'>
+						<Button
+							width='150px'
+							height='48px'
+							bgColor='transparent'
+							focusColor={colors.whiteColor}
+							margin='0 10px'
+							color='#616161'
+							focusScale
+							onClick={() => setFetchHistory(true)}
+						>
+							{user.data.name}
+						</Button>
+					</Link>
 					<Button
 						width='130px'
 						height='48px'
@@ -60,7 +86,7 @@ function Header() {
 						hover
 						onClick={() => setPointsModal(!pointsModal)}
 					>
-						{points.fetched ? points.data['New Points'] : user.data.points}
+						{currentPoints.points}
 						<Image mgL='6px' src={coin} alt='coin' />
 					</Button>
 				</Box>

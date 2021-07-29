@@ -33,38 +33,31 @@ const ButtonGroup = ({
 };
 
 const ButtonGP = (props) => {
-	const {
-		setActiveButton,
-		onClick,
-		defaultActive,
-		children,
-		focusColor,
-		activeBgColor,
-		activeColor,
-	} = props;
+	
 
 	const handleClick = (e) => {
-		setActiveButton();
-		onClick(e);
+		props.setActiveButton();
+		props.onClick(e);
 	};
 
 	useEffect((e) => {
-		if (defaultActive) {
-			setActiveButton();
-			onClick(e);
+		if (props.defaultActive) {
+			props.setActiveButton();
+			props.onClick(e);
 		}
-	}, [defaultActive, setActiveButton, onClick])
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<Button
 			{...props}
-			focusColor={focusColor && activeBgColor}
-			hoverBgColor={activeBgColor}
-			hoverColor={activeColor}
+			focusColor={props.focusColor && props.activeBgColor}
+			hoverBgColor={props.activeBgColor}
+			hoverColor={props.activeColor}
 			onClick={(e) => handleClick(e)}
-			defaultActive={defaultActive}
+			defaultActive={props.defaultActive}
 		>
-			{children}
+			{props.children}
 		</Button>
 	);
 };

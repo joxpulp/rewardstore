@@ -6,7 +6,7 @@ import { Button } from '../../components/buttons';
 import coin from '../../assets/icons/coin.svg';
 
 function ButtonsPoints() {
-	const { setAmount, fetchPoints, setFetchPoints } = useContext(AppContext);
+	const { setAmount, fetchPoints, setFetchPoints, setPoints } = useContext(AppContext);
 
 	const handlePoints = (points) => {
 		const pointsType = {
@@ -16,10 +16,11 @@ function ButtonsPoints() {
 		};
 		setAmount(pointsType[points]);
 		setFetchPoints(true);
+		setPoints({fetched: false})
 	};
 
 	useEffect(() => {
-		fetchPoints && setFetchPoints(false);
+		fetchPoints && setFetchPoints(false)
 	});
 
 	return (

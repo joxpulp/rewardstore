@@ -14,7 +14,8 @@ function ProductCard({
 	productCat,
 	productName,
 	productCost,
-	userPoints,
+	currentPoints,
+	onClick
 }) {
 	const [isHover, setIsHover] = useState(null);
 
@@ -32,13 +33,15 @@ function ProductCard({
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1, transition: { duration: 0.6 } }}
 			>
-				{userPoints > productCost ? (
+				{currentPoints >= productCost ? (
 					<Image
 						position='absolute'
 						top='0'
 						right='0'
 						margin='12px'
 						src={buyblue}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
 					/>
 				) : (
 					<Box
@@ -51,9 +54,11 @@ function ProductCard({
 						alignItems='center'
 						bgColor='rgb(97,97,97,.8)'
 						color='white'
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
 					>
 						<Text marginRight='6px' fontSize='14px'>
-							You need {productCost - userPoints}
+							You need {productCost - currentPoints}
 						</Text>
 						<Image src={coin} />
 					</Box>
@@ -73,7 +78,7 @@ function ProductCard({
 					</Text>
 				</Box>
 				<AnimatePresence>
-					{isHover === productId && userPoints > productCost && (
+					{isHover === productId && currentPoints > productCost && (
 						<Box
 							bgColor='linear-gradient(180deg, rgba(10, 212, 250, 0.7) 0%, rgba(37, 187, 241, 0.4) 100%)'
 							width='100%'
@@ -100,7 +105,12 @@ function ProductCard({
 								</Text>
 								<Image src={coin} />
 							</Box>
-							<Button fontSize='18px' color='#616161' bgColor='white'>
+							<Button
+								onClick={onClick}
+								fontSize='18px'
+								color='#616161'
+								bgColor='white'
+							>
 								Redeem Now
 							</Button>
 						</Box>
