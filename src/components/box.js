@@ -1,0 +1,37 @@
+import styled from "styled-components";
+import { motion } from "framer-motion";
+
+export const Box = styled(motion.div)`
+	position: ${(props) => props.position};
+	top: ${(props) => props.top};
+	right: ${(props) => props.right};
+	bottom: ${(props) => props.bottom};
+	left: ${(props) => props.left};
+	display: ${(props) => (props.display ? props.display : 'flex')};
+	flex: ${(props) => props.flex};
+	grid-template-columns: ${(props) => props.gridColumn};
+	grid-gap: ${(props) => props.gridGap};
+	align-items: ${(props) => props.alignItems};
+	justify-content: ${(props) => props.justifyContent};
+	flex-direction: ${(props) => props.flexDirection};
+	width: ${(props) => props.width};
+	height: ${(props) => props.height};
+	margin: ${(props) => props.margin};
+	margin-top: ${(props) => props.marginTop};
+	margin-bottom: ${(props) => props.marginBottom};
+	padding: ${(props) => props.padding};
+	border-radius: ${(props) => props.borderRadius};
+	border-top: ${(props) => props.borderTop};
+	border-bottom: ${(props) => props.borderBottom};
+	background: ${(props) => props.bgColor};
+	color: ${(props) => props.color};
+	font-size: ${(props) => props.fontSize};
+	transition: ${(props) => props.transition};
+	cursor: ${(props) => props.cursor};
+	box-shadow: ${(props) => props.boxShadow};
+	filter: ${(props) => props.filter};
+	z-index: ${(props) => props.zIndex};
+	overflow: ${(props) => props.overflow};
+	backdrop-filter: ${(props) => props.glass && 'blur(10px )'};
+	-webkit-backdrop-filter: ${(props) => props.glass && 'blur(10px)'};
+`;

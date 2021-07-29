@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
 
-export const useFetch = (url) => {
-    
+export const useFetch = (url, headers) => {
 	const [data, setData] = useState({
 		data: [],
 		fetched: false,
 	});
-
-
+	const [loading, setLoading] = useState(false)
+	
 	useEffect(() => {
-
 		const getData = async () => {
 			try {
-				const response = await fetch(url);
+				setLoading(true)
+				const response = await fetch(url, headers);
 				if (response.status === 200) {
 					const data = await response.json();
 					setData({ data: data, fetched: true });
+					setLoading(false)
 				}
 			} catch (error) {
 				throw console.log(error);
@@ -23,8 +23,8 @@ export const useFetch = (url) => {
 		};
 
 		url && getData();
+		//eslint-disable-next-line
+	}, [url]);
 
-	},[url]);
-
-	return { data, setData };
+	return { data, setData, loading, setLoading };
 };

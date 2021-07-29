@@ -3,15 +3,18 @@ import {colors} from '../../globalstyles/colors'
 
 
 export const HeaderStyles = styled.header`
-    width: 100%;
-`
+	position: relative;
+	width: 100%;
+    height: 100%;
+`;
 
 export const Nav = styled.nav`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-    padding: 0 42px;
-    background-color: ${colors.whiteColor};
-`
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 80px;
+	padding: 0 42px;
+	background-color: ${colors.whiteColor};
+`;
 

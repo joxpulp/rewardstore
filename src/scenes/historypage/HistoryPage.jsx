@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FilterPagination() {
+function HistoryPage() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function FilterPagination() {
     )
 }
 
-export default FilterPagination
+export default HistoryPage
