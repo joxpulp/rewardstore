@@ -1,11 +1,10 @@
-import styled from "styled-components";
-import {colors} from '../../globalstyles/colors'
-
+import styled from 'styled-components';
+import { colors } from '../../globalstyles/colors';
 
 export const HeaderStyles = styled.header`
 	position: relative;
 	width: 100%;
-    height: 100%;
+	height: 100%;
 `;
 
 export const Nav = styled.nav`
@@ -16,5 +15,11 @@ export const Nav = styled.nav`
 	height: 80px;
 	padding: 0 42px;
 	background-color: ${colors.whiteColor};
-`;
 
+	@media (max-width: 40em) {
+		flex-direction: column;
+		padding: 10px 42px;
+		height: auto;
+		
+	}
+`;

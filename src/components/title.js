@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 export const Title = styled(motion.h1)`
@@ -16,7 +16,7 @@ export const Title = styled(motion.h1)`
 	margin: ${(props) => props.margin};
 	padding: ${(props) => props.padding};
 	border-radius: ${(props) => props.borderRadius};
-	background-color: ${(props) => props.bgColor};
+	background-color: ${(props) => props.bg};
 	color: ${(props) => props.color};
 	font-size: ${(props) => props.fontSize};
 	transition: ${(props) => props.transition};

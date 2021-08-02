@@ -3,8 +3,8 @@ import { Button } from './buttons';
 
 const ButtonGroup = ({
 	children,
-	activeBgColor,
-	defaultBgColor,
+	activebg,
+	defaultbg,
 	activeColor,
 	defaultColor,
 	hoverGroup,
@@ -18,12 +18,11 @@ const ButtonGroup = ({
 				cloneElement(child, {
 					setActiveButton: () => setActiveButton(index),
 					key: index,
-					bgColor: activeButton === index ? activeBgColor : defaultBgColor,
+					bg: activeButton === index ? activebg : defaultbg,
 					color: activeButton === index ? activeColor : defaultColor,
-					focusActiveColor:
-						activeButton === index ? activeBgColor : defaultBgColor,
+					focusActiveColor: activeButton === index ? activebg : defaultbg,
 					activeColor: activeColor,
-					activeBgColor: activeBgColor,
+					activebg: activebg,
 					hoverGroup: hoverGroup,
 					focusColor: focus,
 				})
@@ -33,8 +32,6 @@ const ButtonGroup = ({
 };
 
 const ButtonGP = (props) => {
-	
-
 	const handleClick = (e) => {
 		props.setActiveButton();
 		props.onClick(e);
@@ -51,8 +48,8 @@ const ButtonGP = (props) => {
 	return (
 		<Button
 			{...props}
-			focusColor={props.focusColor && props.activeBgColor}
-			hoverBgColor={props.activeBgColor}
+			focusColor={props.focusColor && props.activebg}
+			hoverbg={props.activebg}
 			hoverColor={props.activeColor}
 			onClick={(e) => handleClick(e)}
 			defaultActive={props.defaultActive}

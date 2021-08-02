@@ -22,7 +22,7 @@ function Header() {
 		setCurrentPoints,
 		points,
 		setFetchHistory,
-		fetchHistory
+		fetchHistory,
 	} = useContext(AppContext);
 
 	useEffect(() => {
@@ -32,11 +32,11 @@ function Header() {
 
 	useEffect(() => {
 		points.fetched && setCurrentPoints({ points: points.data['New Points'] });
-		fetchHistory && setFetchHistory(false)
+		fetchHistory && setFetchHistory(false);
 		//eslint-disable-next-line
 	}, [points.fetched, fetchHistory]);
 
-	console.log(fetchHistory)
+	console.log(fetchHistory);
 
 	return (
 		<HeaderStyles>
@@ -57,16 +57,17 @@ function Header() {
 					/>
 				</Link>
 				<Box
+					width='100%'
 					height='48px'
 					alignItems='center'
-					justifyContent='flex-end'
+					justifyContent={['space-between', 'flex-end']}
 					color='#616161'
 				>
 					<Link to='/userhistory'>
 						<Button
 							width='150px'
 							height='48px'
-							bgColor='transparent'
+							bg='transparent'
 							focusColor={colors.whiteColor}
 							margin='0 10px'
 							color='#616161'

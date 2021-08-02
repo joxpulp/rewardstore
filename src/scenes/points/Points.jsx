@@ -12,7 +12,7 @@ function Points() {
 		<Box
 			width='100%'
 			position='absolute'
-			top='85px'
+			top={['115px', '115px', '85px']}
 			justifyContent='flex-end'
 			zIndex='1'
 			padding='0 20px'
@@ -21,7 +21,7 @@ function Points() {
 			<Box
 				width='350px'
 				height='200px'
-				bgColor='#fafafab3'
+				bg={['#ffffffd4', '#ffffffd4', '#fafafab3']}
 				flexDirection='column'
 				justifyContent='space-around'
 				borderRadius='10px'
@@ -37,7 +37,7 @@ function Points() {
 					<Button
 						width='170px'
 						fontSize='15px'
-						bgColor='#00d7fdba'
+						bg='#00d7fdba'
 						color='white'
 						onClick={() => setPointsModal(false)}
 						glass

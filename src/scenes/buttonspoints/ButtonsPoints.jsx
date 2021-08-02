@@ -6,7 +6,8 @@ import { Button } from '../../components/buttons';
 import coin from '../../assets/icons/coin.svg';
 
 function ButtonsPoints() {
-	const { setAmount, fetchPoints, setFetchPoints, setPoints } = useContext(AppContext);
+	const { setAmount, fetchPoints, setFetchPoints, setPoints } =
+		useContext(AppContext);
 
 	const handlePoints = (points) => {
 		const pointsType = {
@@ -16,18 +17,18 @@ function ButtonsPoints() {
 		};
 		setAmount(pointsType[points]);
 		setFetchPoints(true);
-		setPoints({fetched: false})
+		setPoints({ fetched: false });
 	};
 
 	useEffect(() => {
-		fetchPoints && setFetchPoints(false)
+		fetchPoints && setFetchPoints(false);
 	});
 
 	return (
 		<Box justifyContent='center'>
 			<Button
 				onClick={() => handlePoints(1000)}
-				bgColor='#ffffff21'
+				bg='#ffffff21'
 				focusColor='rgb(68, 221, 248, .7)'
 				marginRight='10px'
 				width='90px'
@@ -50,7 +51,7 @@ function ButtonsPoints() {
 			</Button>
 			<Button
 				onClick={() => handlePoints(5000)}
-				bgColor='#ffffff37'
+				bg='#ffffff37'
 				focusColor='rgb(68, 221, 248, .7)'
 				marginRight='10px'
 				width='90px'
@@ -73,7 +74,7 @@ function ButtonsPoints() {
 			</Button>
 			<Button
 				onClick={() => handlePoints(7500)}
-				bgColor='#ffffff37'
+				bg='#ffffff37'
 				focusColor='rgb(68, 221, 248, .7)'
 				marginRight='10px'
 				width='90px'

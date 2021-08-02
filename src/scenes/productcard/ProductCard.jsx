@@ -15,7 +15,7 @@ function ProductCard({
 	productName,
 	productCost,
 	currentPoints,
-	onClick
+	onClick,
 }) {
 	const [isHover, setIsHover] = useState(null);
 
@@ -25,7 +25,7 @@ function ProductCard({
 				position='relative'
 				flexDirection='column'
 				alignItems='center'
-				bgColor='white'
+				bg='white'
 				width='100%'
 				boxShadow='2px 2px 4px rgba(0, 0, 0, 0.1)'
 				onHoverStart={() => setIsHover(productId)}
@@ -52,7 +52,7 @@ function ProductCard({
 						padding='11px 20px'
 						borderRadius='100px'
 						alignItems='center'
-						bgColor='rgb(97,97,97,.8)'
+						bg='rgb(97,97,97,.8)'
 						color='white'
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
@@ -68,7 +68,7 @@ function ProductCard({
 					width='80%'
 					borderTop='1px solid #D9D9D9'
 					flexDirection='column'
-					padding='18px 0'
+					padding='18px 0px'
 				>
 					<Text color='#A3A3A3' fontSize='16px'>
 						{productCat}
@@ -78,9 +78,9 @@ function ProductCard({
 					</Text>
 				</Box>
 				<AnimatePresence>
-					{isHover === productId && currentPoints > productCost && (
+					{isHover === productId && currentPoints >= productCost && (
 						<Box
-							bgColor='linear-gradient(180deg, rgba(10, 212, 250, 0.7) 0%, rgba(37, 187, 241, 0.4) 100%)'
+							background='linear-gradient(180deg, rgba(10, 212, 250, 0.7) 0%, rgba(37, 187, 241, 0.4) 100%)'
 							width='100%'
 							height='100%'
 							flexDirection='column'
@@ -109,7 +109,7 @@ function ProductCard({
 								onClick={onClick}
 								fontSize='18px'
 								color='#616161'
-								bgColor='white'
+								bg='white'
 							>
 								Redeem Now
 							</Button>

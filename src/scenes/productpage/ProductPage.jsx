@@ -13,7 +13,6 @@ import { AnimatePresence } from 'framer-motion';
 
 function ProductPage() {
 	const { products } = useContext(AppContext);
-
 	const { sortState: productsSorted, sortElements } = useSort(products.data);
 	const {
 		data: productList,
@@ -36,31 +35,33 @@ function ProductPage() {
 		>
 			<Box
 				alignItems='center'
+				flexDirection={['column', 'column', 'row']}
 				width='80%'
-				padding='24px 0px'
+				py={['24px']}
 				borderBottom='1px solid #D9D9D9'
 			>
 				<Text
 					padding='0px 24px'
-					borderRight='1px solid #D9D9D9'
+					borderRight={['none', 'none', '1px solid #D9D9D9']}
 					color='#616161'
 				>
 					{`${currentItems} of ${totalItems} products`}
 				</Text>
-				<Text padding='0 0 0 24px' color='#616161'>
+				<Text paddingLeft={[0, 0, '24px']} color='#616161'>
 					Sort by:
 				</Text>
-				<Box flex={1}>
+				<Box flexDirection={['column', 'column', 'row']} flex={1}>
 					<ButtonGroup
 						activeColor='#ffffff'
-						activeBgColor='#0AD4FA'
+						activebg='#0AD4FA'
 						hoverGroup
 						focus
 					>
 						<ButtonGP
 							onClick={() => sortElements('default')}
 							fontSize='20px'
-							margin='0px 24px'
+							mx={[0, 0, '24px']}
+							my={['5px', '5px', 0]}
 							defaultActive
 						>
 							Most Recent
@@ -68,14 +69,16 @@ function ProductPage() {
 						<ButtonGP
 							onClick={() => sortElements('ascending')}
 							fontSize='20px'
-							marginRight='24px'
+							marginRight={[0, 0, '24px']}
+							my={['5px', '5px', 0]}
 						>
 							Lowest Price
 						</ButtonGP>
 						<ButtonGP
 							onClick={() => sortElements('descending')}
 							fontSize='20px'
-							marginRight='24px'
+							marginRight={[0, 0, '24px']}
+							my={['5px', '5px', 0]}
 						>
 							Highest Price
 						</ButtonGP>
@@ -100,7 +103,7 @@ function ProductPage() {
 			</Box>
 			<ProductList productList={productList} />
 			<Box
-				mgBottom='64px'
+				marginBottom='64px'
 				justifyContent='space-between'
 				alignItems='center'
 				width='80%'

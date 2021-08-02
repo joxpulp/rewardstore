@@ -3,20 +3,20 @@ import { AppContext } from '../../context/AppContext';
 import { Box } from '../../components/box';
 import ProductCard from '../productcard/ProductCard';
 
-function ProductList({productList}) {
+function ProductList({ productList }) {
 	const {
 		setRedeemId,
 		fetchRedeem,
 		setFetchRedeem,
 		currentPoints,
-		setCurrentPoints
+		setCurrentPoints,
 	} = useContext(AppContext);
 
-	const handleRedeem = (id, cost, currentPoints ) => {
+	const handleRedeem = (id, cost, currentPoints) => {
 		setRedeemId(id);
 		setFetchRedeem(true);
-		const userNewPoints = currentPoints - cost
-		setCurrentPoints({points: userNewPoints})
+		const userNewPoints = currentPoints >= 0 && currentPoints - cost;
+		setCurrentPoints({ points: userNewPoints });
 	};
 
 	useEffect(() => {
@@ -26,12 +26,17 @@ function ProductList({productList}) {
 	return (
 		<Box
 			width='80%'
-			display='grid'
-			gridColumn='repeat(4, minmax(100px, 1fr))'
+			display={['flex', 'grid']}
+			gridTemplateColumns={[
+				null,
+				'repeat(2, minmax(100px, 1fr))',
+				'repeat(4, minmax(100px, 1fr))',
+			]}
 			gridGap='24px'
 			padding='54px 0px'
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
+			flexDirection={['column']}
 		>
 			{productList.map((product) => (
 				<ProductCard

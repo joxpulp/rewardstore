@@ -1,7 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { motion } from 'framer-motion';
-
-
 
 export const Image = styled(motion.img)`
 	position: ${(props) => props.position};
@@ -15,6 +13,6 @@ export const Image = styled(motion.img)`
 	margin-left: ${(props) => props.mgL};
 	margin-right: ${(props) => props.marginRight};
 	padding: ${(props) => props.padding};
-	background: ${(props) => props.bgColor};
+	background: ${(props) => props.bg};
 	cursor: ${(props) => props.pointer && 'pointer'};
 `;
