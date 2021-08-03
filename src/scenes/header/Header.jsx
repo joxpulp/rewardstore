@@ -8,6 +8,7 @@ import { Button } from '../../components/buttons';
 import { Image } from '../../components/image';
 import { Box } from '../../components/box';
 import { colors } from '../../globalstyles/colors';
+import Skeleton from 'react-loading-skeleton';
 import aerolablogo from '../../assets/aerolab-logo.svg';
 import coin from '../../assets/icons/coin.svg';
 import banner from '../../assets/header-x1.png';
@@ -16,6 +17,7 @@ import Points from '../points/Points';
 function Header() {
 	const {
 		user,
+		loadingUser,
 		pointsModal,
 		setPointsModal,
 		currentPoints,
@@ -26,17 +28,15 @@ function Header() {
 	} = useContext(AppContext);
 
 	useEffect(() => {
-		setCurrentPoints({ points: user.data.points });
+		user.fetched && setCurrentPoints({ points: user.data.points });
 		//eslint-disable-next-line
-	}, [user.data.points]);
+	}, [user.fetched]);
 
 	useEffect(() => {
 		points.fetched && setCurrentPoints({ points: points.data['New Points'] });
 		fetchHistory && setFetchHistory(false);
 		//eslint-disable-next-line
 	}, [points.fetched, fetchHistory]);
-
-	console.log(fetchHistory);
 
 	return (
 		<HeaderStyles>
@@ -64,35 +64,49 @@ function Header() {
 					justifyContent={['space-between', 'flex-end']}
 					color='#616161'
 				>
-					<Link to='/userhistory'>
+					{loadingUser ? (
+						<Box px='10px'>
+							<Skeleton width={150} height={40} />
+						</Box>
+					) : (
+						<Link to='/userhistory'>
+							<Button
+								width='120px'
+								height='48px'
+								bg='transparent'
+								focusColor={colors.whiteColor}
+								mx={[0, '10px']}
+								borderRadius='none'
+								padding='0'
+								color='#616161'
+								focusScale
+								onClick={() => setFetchHistory(true)}
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+							>
+								{user.data.name}
+							</Button>
+						</Link>
+					)}
+					{loadingUser ? (
+						<Skeleton width={150} height={50} />
+					) : (
 						<Button
-							width='120px'
+							width='130px'
 							height='48px'
-							bg='transparent'
-							focusColor={colors.whiteColor}
-							mx={[0,'10px']}
-							borderRadius='none'
-							padding='0'
+							borderRadius='20.5px'
 							color='#616161'
-							focusScale
-							onClick={() => setFetchHistory(true)}
+							fontSize='22px'
+							focusColor={colors.backgroundSecunday}
+							hover
+							onClick={() => setPointsModal(!pointsModal)}
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
 						>
-							{user.data.name}
+							{currentPoints.points}
+							<Image mgL='6px' src={coin} alt='coin' />
 						</Button>
-					</Link>
-					<Button
-						width='130px'
-						height='48px'
-						borderRadius='20.5px'
-						color='#616161'
-						fontSize='22px'
-						focusColor={colors.backgroundSecunday}
-						hover
-						onClick={() => setPointsModal(!pointsModal)}
-					>
-						{currentPoints.points}
-						<Image mgL='6px' src={coin} alt='coin' />
-					</Button>
+					)}
 				</Box>
 			</Nav>
 			<Box position='relative' color='white'>

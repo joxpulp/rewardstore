@@ -11,7 +11,6 @@ function AppProvider({ children }) {
 	const [fetchRedeem, setFetchRedeem] = useState(false);
 	const [fetchHistory, setFetchHistory] = useState(false)
 	const [currentPoints, setCurrentPoints] = useState({ points: 0 });
-
 	const headers = {
 		'Content-Type': 'application/json',
 		Accept: 'application/json',
@@ -19,7 +18,7 @@ function AppProvider({ children }) {
 			'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRmMTU5MTY3Mjk2ZTAwMTk5NjQxMzYiLCJpYXQiOjE2MjUyMzI3ODV9.VtTEAHztgwB8UpIUoBf0pydVpIrEIRV8QoaqbXopJmQ',
 	};
 
-	const { data: user } = useFetch(
+	const { data: user, loading: loadingUser } = useFetch(
 		`https://private-eaac9f-aerolabchallenge.apiary-proxy.com/user/me`,
 		{ headers }
 	);
@@ -29,7 +28,7 @@ function AppProvider({ children }) {
 			`https://private-eaac9f-aerolabchallenge.apiary-proxy.com/user/points`,
 		{ method: 'POST', headers, body: JSON.stringify({ amount: amount }) }
 	);
-	const { data: redeem, setData: setRedeem } = useFetch(
+	const { data: redeem, setData: setRedeem, loading: loadingRedeem } = useFetch(
 		fetchRedeem &&
 			`https://private-eaac9f-aerolabchallenge.apiary-proxy.com/redeem`,
 		{ method: 'POST', headers, body: JSON.stringify({ productId: redeemId }) }
@@ -67,7 +66,9 @@ function AppProvider({ children }) {
 				setPoints,
 				history,
 				fetchHistory,
-				setFetchHistory
+				setFetchHistory,
+				loadingRedeem,
+				loadingUser
 			}}
 		>
 			{children}

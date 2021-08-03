@@ -18,7 +18,9 @@ export const useFetch = (url, headers) => {
 					setLoading(false)
 				}
 			} catch (error) {
-				throw console.log(error);
+				setLoading(false);
+				setData({fetched: false});
+				throw error
 			}
 		};
 
