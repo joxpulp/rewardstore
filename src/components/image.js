@@ -8,6 +8,7 @@ export const Image = styled(motion.img)`
 	bottom: ${(props) => props.bottom};
 	left: ${(props) => props.left};
 	width: ${(props) => props.width};
+	min-width: ${(props) => props.minWidth};
 	height: ${(props) => (props.height ? props.height : 'auto')};
 	margin: ${(props) => props.margin};
 	margin-left: ${(props) => props.mgL};

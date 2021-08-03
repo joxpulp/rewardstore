@@ -109,8 +109,14 @@ function Header() {
 					)}
 				</Box>
 			</Nav>
-			<Box position='relative' color='white'>
-				<Image width='100%' src={banner} alt='banner' />
+			<Box width='100%' position='relative' color='white'>
+				<Image
+					width='100%'
+					height='100%'
+					minWidth='100%'
+					src={banner}
+					alt='banner'
+				/>
 				<Title
 					overflow='hidden'
 					position='absolute'

@@ -32,6 +32,7 @@ function ButtonsPoints() {
 				color={['#686868', '#888888']}
 				focusColor='rgb(68, 221, 248, .7)'
 				marginRight='10px'
+				padding='0'
 				width='90px'
 				borderRadius='10px'
 				hover
@@ -56,6 +57,7 @@ function ButtonsPoints() {
 				color={['#686868', '#888888']}
 				focusColor='rgb(68, 221, 248, .7)'
 				marginRight='10px'
+				padding='0'
 				width='90px'
 				borderRadius='10px'
 				hover
@@ -80,6 +82,7 @@ function ButtonsPoints() {
 				color={['#686868', '#888888']}
 				focusColor='rgb(68, 221, 248, .7)'
 				marginRight='10px'
+				padding='0'
 				width='90px'
 				borderRadius='10px'
 				hover

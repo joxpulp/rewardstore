@@ -52,7 +52,7 @@ function ProductCard({
 						padding='11px 20px'
 						borderRadius='100px'
 						alignItems='center'
-						bg='rgb(97,97,97,.8)'
+						bg='#666666a9'
 						color='white'
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
@@ -80,13 +80,17 @@ function ProductCard({
 				<AnimatePresence>
 					{isHover === productId && currentPoints >= productCost && (
 						<Box
+							position='absolute'
+							top='0'
+							right='0'
+							bottom='0'
+							left='0'
 							background='linear-gradient(180deg, rgba(10, 212, 250, 0.7) 0%, rgba(37, 187, 241, 0.4) 100%)'
 							width='100%'
 							height='100%'
 							flexDirection='column'
 							justifyContent='center'
 							alignItems='center'
-							position='absolute'
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}

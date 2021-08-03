@@ -6,9 +6,9 @@ function HistoryList({ historyList }) {
 		<>
 			<Box
 				width='80%'
-				display={['flex', 'grid']}
+				display='grid'
 				gridTemplateColumns={[
-					null,
+					'repeat(1, minmax(100px, 1fr))',
 					'repeat(2, minmax(100px, 1fr))',
 					'repeat(4, minmax(100px, 1fr))',
 				]}

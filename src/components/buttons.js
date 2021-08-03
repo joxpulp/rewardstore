@@ -10,18 +10,20 @@ import {
 import { motion } from 'framer-motion';
 
 export const Button = styled(motion.button)`
+	box-sizing: border-box;
 	${space}
 	${color}
 	${typography}
 	${layout}
 	${flexbox}
 	${position}
-	display: flex;
+	display: -webkit-flex;
 	align-items: center;
 	justify-content: center;
+	-webkit-justify-content: center;
 	width: ${(props) => (props.width ? props.width : '172px')};
 	height: ${(props) => (props.height ? props.height : '48px')};
-	padding: ${(props) => (props.padding ? props.padding : '24px')};
+	padding: ${(props) => (props.padding ? props.padding : '0 24px')};
 	background-color: ${(props) => (props.bg ? props.bg : '#EDEDED')};
 	color: ${(props) => (props.color ? props.color : '#A3A3A3')};
 	border-radius: ${(props) =>
