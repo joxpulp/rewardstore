@@ -29,6 +29,7 @@ function ButtonsPoints() {
 			<Button
 				onClick={() => handlePoints(1000)}
 				bg='#ffffff21'
+				color={['#686868', '#888888']}
 				focusColor='rgb(68, 221, 248, .7)'
 				marginRight='10px'
 				width='90px'
@@ -51,7 +52,8 @@ function ButtonsPoints() {
 			</Button>
 			<Button
 				onClick={() => handlePoints(5000)}
-				bg='#ffffff37'
+				bg='#ffffff21'
+				color={['#686868', '#888888']}
 				focusColor='rgb(68, 221, 248, .7)'
 				marginRight='10px'
 				width='90px'
@@ -74,7 +76,8 @@ function ButtonsPoints() {
 			</Button>
 			<Button
 				onClick={() => handlePoints(7500)}
-				bg='#ffffff37'
+				bg='#ffffff21'
+				color={['#686868', '#888888']}
 				focusColor='rgb(68, 221, 248, .7)'
 				marginRight='10px'
 				width='90px'

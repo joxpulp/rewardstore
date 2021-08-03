@@ -54,6 +54,7 @@ function Header() {
 						}}
 						src={aerolablogo}
 						alt='aerolablogo'
+						focusScale
 					/>
 				</Link>
 				<Box
@@ -65,11 +66,13 @@ function Header() {
 				>
 					<Link to='/userhistory'>
 						<Button
-							width='150px'
+							width='120px'
 							height='48px'
 							bg='transparent'
 							focusColor={colors.whiteColor}
-							margin='0 10px'
+							mx={[0,'10px']}
+							borderRadius='none'
+							padding='0'
 							color='#616161'
 							focusScale
 							onClick={() => setFetchHistory(true)}
@@ -94,7 +97,13 @@ function Header() {
 			</Nav>
 			<Box position='relative' color='white'>
 				<Image width='100%' src={banner} alt='banner' />
-				<Title position='absolute' fontSize='72px' left='132px' bottom='46px'>
+				<Title
+					overflow='hidden'
+					position='absolute'
+					fontSize={['40px', '72px']}
+					left={['20px', '20px', '132px']}
+					bottom={['20px', '20px', '46px']}
+				>
 					Electronics
 				</Title>
 			</Box>

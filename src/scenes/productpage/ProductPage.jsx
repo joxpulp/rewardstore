@@ -36,7 +36,7 @@ function ProductPage() {
 			<Box
 				alignItems='center'
 				flexDirection={['column', 'column', 'row']}
-				width='80%'
+				width={['95%', '80%']}
 				py={['24px']}
 				borderBottom='1px solid #D9D9D9'
 			>
@@ -47,10 +47,14 @@ function ProductPage() {
 				>
 					{`${currentItems} of ${totalItems} products`}
 				</Text>
-				<Text paddingLeft={[0, 0, '24px']} color='#616161'>
+				<Text
+					display={['none', 'none', 'flex']}
+					paddingLeft={[0, 0, '24px']}
+					color='#616161'
+				>
 					Sort by:
 				</Text>
-				<Box flexDirection={['column', 'column', 'row']} flex={1}>
+				<Box my='10px' flex={1}>
 					<ButtonGroup
 						activeColor='#ffffff'
 						activebg='#0AD4FA'
@@ -59,8 +63,9 @@ function ProductPage() {
 					>
 						<ButtonGP
 							onClick={() => sortElements('default')}
-							fontSize='20px'
-							mx={[0, 0, '24px']}
+							fontSize={['15px', '20px']}
+							width={['100%', '172px']}
+							mx={['6px', '6px', '24px']}
 							my={['5px', '5px', 0]}
 							defaultActive
 						>
@@ -68,16 +73,18 @@ function ProductPage() {
 						</ButtonGP>
 						<ButtonGP
 							onClick={() => sortElements('ascending')}
-							fontSize='20px'
-							marginRight={[0, 0, '24px']}
+							fontSize={['15px', '20px']}
+							width={['100%', '172px']}
+							mx={['6px', '6px', '24px']}
 							my={['5px', '5px', 0]}
 						>
 							Lowest Price
 						</ButtonGP>
 						<ButtonGP
 							onClick={() => sortElements('descending')}
-							fontSize='20px'
-							marginRight={[0, 0, '24px']}
+							fontSize={['15px', '20px']}
+							width={['100%', '172px']}
+							mx={['6px', '6px', '24px']}
 							my={['5px', '5px', 0]}
 						>
 							Highest Price

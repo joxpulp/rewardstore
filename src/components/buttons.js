@@ -21,7 +21,7 @@ export const Button = styled(motion.button)`
 	justify-content: center;
 	width: ${(props) => (props.width ? props.width : '172px')};
 	height: ${(props) => (props.height ? props.height : '48px')};
-	padding: ${(props) => (props.padding ? props.padding : '24px 24px')};
+	padding: ${(props) => (props.padding ? props.padding : '24px')};
 	background-color: ${(props) => (props.bg ? props.bg : '#EDEDED')};
 	color: ${(props) => (props.color ? props.color : '#A3A3A3')};
 	border-radius: ${(props) =>
@@ -47,5 +47,6 @@ export const Button = styled(motion.button)`
 			props.hover ? props.focusColor : props.hoverGroup && props.hoverbg};
 		color: ${(props) =>
 			props.hover ? 'white' : props.hoverGroup && props.hoverColor};
+		${(props) => props.focusScale && 'transform: scale(1.2);'}
 	}
 `;

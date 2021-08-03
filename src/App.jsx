@@ -12,7 +12,7 @@ function App() {
 		<div className='App'>
 			<GlobalStyle />
 			<Header />
-			<Box width='100%' marginTop={[0,0,'42px']}>
+			<Box width='100%' marginTop={[0, 0, '42px']}>
 				<AnimatePresence>
 					<Switch location={location} key={location.key}>
 						<Route exact path='/rewardstore'>

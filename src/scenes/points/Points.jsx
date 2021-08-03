@@ -10,8 +10,9 @@ function Points() {
 
 	return (
 		<Box
-			width='100%'
 			position='absolute'
+			width='100%'
+			height={['100%']}
 			top={['115px', '115px', '85px']}
 			justifyContent='flex-end'
 			zIndex='1'
@@ -21,7 +22,7 @@ function Points() {
 			<Box
 				width='350px'
 				height='200px'
-				bg={['#ffffffd4', '#ffffffd4', '#fafafab3']}
+				bg={['#edededd3', '#ffffffd4', '#fafafab3']}
 				flexDirection='column'
 				justifyContent='space-around'
 				borderRadius='10px'
@@ -31,13 +32,15 @@ function Points() {
 				exit={{ x: '100%', opacity: 0 }}
 				glass
 			>
-				<Text color='#888888'>Select the amount of points!!</Text>
+				<Text color={['#686868', '#888888']}>
+					Select the amount of points!!
+				</Text>
 				<ButtonsPoints />
 				<Box margin='0px 20px' justifyContent='space-around'>
 					<Button
 						width='170px'
 						fontSize='15px'
-						bg='#00d7fdba'
+						bg={['#00d7fd', '#00d7fdba']}
 						color='white'
 						onClick={() => setPointsModal(false)}
 						glass

@@ -28,8 +28,8 @@ function ProductCard({
 				bg='white'
 				width='100%'
 				boxShadow='2px 2px 4px rgba(0, 0, 0, 0.1)'
-				onHoverStart={() => setIsHover(productId)}
-				onHoverEnd={() => setIsHover(null)}
+				onMouseEnter={() => setIsHover(productId)}
+				onMouseLeave={() => setIsHover(null)}
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1, transition: { duration: 0.6 } }}
 			>

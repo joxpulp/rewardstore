@@ -18,7 +18,7 @@ export const Nav = styled.nav`
 
 	@media (max-width: 40em) {
 		flex-direction: column;
-		padding: 10px 42px;
+		padding: 10px 5px;
 		height: auto;
 		
 	}
