@@ -2,14 +2,14 @@ import { useContext } from 'react';
 import { useSort } from '../../hooks/useSort';
 import { usePagination } from '../../hooks/usePagination';
 import { AppContext } from '../../context/AppContext';
+import { AnimatePresence } from 'framer-motion';
 import { Box } from '../../components/box';
 import { Text } from '../../components/text';
 import { Image } from '../../components/image';
+import ProductList from '../productlist/ProductList';
+import ButtonFilters from '../buttonfilters/ButtonFilters';
 import arrowLeft from '../../assets/icons/arrow-left.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
-import { ButtonGP, ButtonGroup } from '../../components/ButtonGroup';
-import ProductList from '../productlist/ProductList';
-import { AnimatePresence } from 'framer-motion';
 
 function ProductPage() {
 	const { products } = useContext(AppContext);
@@ -58,43 +58,7 @@ function ProductPage() {
 				>
 					Sort by:
 				</Text>
-				<Box my='10px' flex={1}>
-					<ButtonGroup
-						activeColor='#ffffff'
-						activebg='#0AD4FA'
-						hoverGroup
-						focus
-					>
-						<ButtonGP
-							onClick={() => sortElements('default')}
-							fontSize={['15px', '20px']}
-							width={['100%', '172px']}
-							mx={['6px', '6px', '24px']}
-							my={['5px', '5px', 0]}
-							defaultActive
-						>
-							Most Recent
-						</ButtonGP>
-						<ButtonGP
-							onClick={() => sortElements('ascending')}
-							fontSize={['15px', '20px']}
-							width={['100%', '172px']}
-							mx={['6px', '6px', '24px']}
-							my={['5px', '5px', 0]}
-						>
-							Lowest Price
-						</ButtonGP>
-						<ButtonGP
-							onClick={() => sortElements('descending')}
-							fontSize={['15px', '20px']}
-							width={['100%', '172px']}
-							mx={['6px', '6px', '24px']}
-							my={['5px', '5px', 0]}
-						>
-							Highest Price
-						</ButtonGP>
-					</ButtonGroup>
-				</Box>
+				<ButtonFilters sortElements={sortElements}/>
 				<Box>
 					<AnimatePresence>
 						{currentPage > 1 && (
@@ -103,13 +67,19 @@ function ProductPage() {
 								pointer
 								onClick={() => prevPage()}
 								src={arrowLeft}
+								alt='arrowLeft'
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								exit={{ opacity: 0 }}
 							/>
 						)}
 					</AnimatePresence>
-					<Image pointer onClick={() => nextPage()} src={arrowRight} />
+					<Image
+						pointer
+						onClick={() => nextPage()}
+						src={arrowRight}
+						alt='arrowRight'
+					/>
 				</Box>
 			</Box>
 			<ProductList productList={productList} />
@@ -133,13 +103,19 @@ function ProductPage() {
 								pointer
 								onClick={() => prevPage()}
 								src={arrowLeft}
+								alt='arrowLeft'
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								exit={{ opacity: 0 }}
 							/>
 						)}
 					</AnimatePresence>
-					<Image pointer onClick={() => nextPage()} src={arrowRight} />
+					<Image
+						pointer
+						onClick={() => nextPage()}
+						src={arrowRight}
+						alt='arrowRight'
+					/>
 				</Box>
 			</Box>
 		</Box>

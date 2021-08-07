@@ -58,13 +58,19 @@ function HistoryPage() {
 								pointer
 								onClick={() => prevPage()}
 								src={arrowLeft}
+								alt='arrowLeft'
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								exit={{ opacity: 0 }}
 							/>
 						)}
 					</AnimatePresence>
-					<Image pointer onClick={() => nextPage()} src={arrowRight} />
+					<Image
+						pointer
+						onClick={() => nextPage()}
+						src={arrowRight}
+						alt='arrowRight'
+					/>
 				</Box>
 			</Box>
 			<HistoryList historyList={historyList} />
@@ -88,13 +94,19 @@ function HistoryPage() {
 								pointer
 								onClick={() => prevPage()}
 								src={arrowLeft}
+								alt='arrowLeft'
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								exit={{ opacity: 0 }}
 							/>
 						)}
 					</AnimatePresence>
-					<Image pointer onClick={() => nextPage()} src={arrowRight} />
+					<Image
+						pointer
+						onClick={() => nextPage()}
+						src={arrowRight}
+						alt='arrowRight'
+					/>
 				</Box>
 			</Box>
 		</Box>
