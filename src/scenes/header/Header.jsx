@@ -2,12 +2,10 @@ import { useContext, useEffect } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { Link } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { HeaderStyles, Nav } from './headerstyles';
 import { Title } from '../../components/title';
 import { Button } from '../../components/buttons';
 import { Image } from '../../components/image';
 import { Box } from '../../components/box';
-import { colors } from '../../globalstyles/colors';
 import Skeleton from 'react-loading-skeleton';
 import aerolablogo from '../../assets/aerolab-logo.svg';
 import coin from '../../assets/icons/coin.svg';
@@ -39,9 +37,24 @@ function Header() {
 	}, [points.fetched, fetchHistory]);
 
 	return (
-		<HeaderStyles>
+		<Box
+			as='header'
+			position='relative'
+			width='100%'
+			height='100%'
+			display='block'
+		>
 			<AnimatePresence>{pointsModal && <Points />}</AnimatePresence>
-			<Nav>
+			<Box
+				as='nav'
+				position='relative'
+				flexDirection={['column', 'column', 'row']}
+				justify-content='space-between'
+				alignItems='center'
+				height={['auto', '80px']}
+				padding={['10px 5px', '10px 5px', '0 42px']}
+				bg='white'
+			>
 				<Link to='/rewardstore'>
 					<Image
 						initial={{ x: -100, opacity: 0 }}
@@ -74,7 +87,7 @@ function Header() {
 								width='120px'
 								height='48px'
 								bg='transparent'
-								focusColor={colors.whiteColor}
+								focusColor='white'
 								mx={[0, '10px']}
 								borderRadius='none'
 								padding='0'
@@ -97,7 +110,7 @@ function Header() {
 							borderRadius='20.5px'
 							color='#616161'
 							fontSize='22px'
-							focusColor={colors.backgroundSecunday}
+							focusColor='#0AD4FA'
 							hover
 							onClick={() => setPointsModal(!pointsModal)}
 							initial={{ opacity: 0 }}
@@ -108,8 +121,8 @@ function Header() {
 						</Button>
 					)}
 				</Box>
-			</Nav>
-			<Box width='100%' position='relative' color='white'>
+			</Box>
+			<Box as='section' width='100%' position='relative' color='white'>
 				<Image
 					width='100%'
 					height='100%'
@@ -127,7 +140,7 @@ function Header() {
 					Electronics
 				</Title>
 			</Box>
-		</HeaderStyles>
+		</Box>
 	);
 }
 

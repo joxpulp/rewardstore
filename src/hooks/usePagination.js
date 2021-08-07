@@ -3,8 +3,8 @@ import { useState } from 'react';
 export const usePagination = (inputData = [], itemsPerPage) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [currentItems, setCurrentItems] = useState(itemsPerPage);
-	const totalPage = Math.ceil(inputData.length / itemsPerPage);
 	const totalItems = inputData.length;
+	const totalPage = Math.ceil(inputData.length / itemsPerPage);
 	const start = (currentPage - 1) * itemsPerPage;
 	const data = inputData.slice(start, start + itemsPerPage);
 

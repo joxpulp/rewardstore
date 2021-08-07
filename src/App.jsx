@@ -12,10 +12,10 @@ function App() {
 	return (
 		<div className='App'>
 			<GlobalStyle />
-			<RedeemModal/>
+			<RedeemModal />
 			<Header />
-			<Box width='100%' marginTop={[0, 0, '42px']}>
-				<AnimatePresence>
+			<Box as='main' width='100%' marginTop={[0, 0, '42px']}>
+				<AnimatePresence exitBeforeEnter >
 					<Switch location={location} key={location.key}>
 						<Route exact path='/rewardstore'>
 							<ProductPage />

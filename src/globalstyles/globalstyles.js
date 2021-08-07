@@ -1,5 +1,4 @@
-import { createGlobalStyle } from "styled-components";
-import {colors} from './colors'
+import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
@@ -13,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
   body {
-    background-color: ${colors.backgroundPrimary};
+    background-color: '#F9F9F9';
   }
 
   h1, h2, h3, h4, h5, h6 {

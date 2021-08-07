@@ -30,15 +30,19 @@ function ProductPage() {
 			justifyContent='center'
 			width='100%'
 			initial={{ opacity: 0 }}
-			animate={{ opacity: 1, transition: { delay: 0.5, duration: 0.5 } }}
+			animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.2 } }}
 			exit={{ x: '-100%', transition: { ease: 'easeInOut' } }}
 		>
 			<Box
+				as='section'
 				alignItems='center'
 				flexDirection={['column', 'column', 'row']}
 				width={['95%', '80%']}
 				py={['24px']}
 				borderBottom='1px solid #D9D9D9'
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.2 } }}
+				exit={{ x: '-100%', transition: { ease: 'easeInOut' } }}
 			>
 				<Text
 					padding='0px 24px'
@@ -110,6 +114,7 @@ function ProductPage() {
 			</Box>
 			<ProductList productList={productList} />
 			<Box
+				as='footer'
 				marginBottom='64px'
 				justifyContent='space-between'
 				alignItems='center'

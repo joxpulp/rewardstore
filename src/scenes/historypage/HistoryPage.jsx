@@ -21,6 +21,7 @@ function HistoryPage() {
 		prevPage,
 		currentPage,
 	} = usePagination(historyReversed, 16);
+
 	return (
 		<Box
 			flexDirection='column'
@@ -28,10 +29,11 @@ function HistoryPage() {
 			justifyContent='center'
 			width='100%'
 			initial={{ opacity: 0 }}
-			animate={{ opacity: 1, transition: { delay: 0.5, duration: 0.5 } }}
+			animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.2 } }}
 			exit={{ x: '-100%', transition: { ease: 'easeInOut' } }}
 		>
 			<Box
+				as='section'
 				alignItems='center'
 				flexDirection={['column', 'column', 'row']}
 				width='80%'
@@ -67,6 +69,7 @@ function HistoryPage() {
 			</Box>
 			<HistoryList historyList={historyList} />
 			<Box
+				as='footer'
 				marginBottom='64px'
 				justifyContent='space-between'
 				alignItems='center'

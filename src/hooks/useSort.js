@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
 export const useSort = (data) => {
+	const arrayToSort = [...data];
 	const [sortState, setSortState] = useState({
 		data: [],
 	});
-	const arrayToSort = [...data];
 
 	useEffect(() => {
-		sortState.data.length === 0 && setSortState({ data: data });
+		sortState.data.length === 0 && setSortState({ data });
 	}, [sortState.data.length, data]);
 
 	const sortElements = (filter) => {

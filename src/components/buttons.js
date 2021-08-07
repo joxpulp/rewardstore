@@ -10,7 +10,6 @@ import {
 import { motion } from 'framer-motion';
 
 export const Button = styled(motion.button)`
-	box-sizing: border-box;
 	${space}
 	${color}
 	${typography}

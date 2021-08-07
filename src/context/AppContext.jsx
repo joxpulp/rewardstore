@@ -9,7 +9,7 @@ function AppProvider({ children }) {
 	const [pointsModal, setPointsModal] = useState(false);
 	const [fetchPoints, setFetchPoints] = useState(false);
 	const [fetchRedeem, setFetchRedeem] = useState(false);
-	const [fetchHistory, setFetchHistory] = useState(false)
+	const [fetchHistory, setFetchHistory] = useState(true)
 	const [currentPoints, setCurrentPoints] = useState({ points: 0 });
 	const headers = {
 		'Content-Type': 'application/json',

@@ -4,18 +4,18 @@ import { Box } from '../../components/box';
 import ProductCard from '../productcard/ProductCard';
 
 function ProductList({ productList }) {
-	const { setRedeemId, setFetchRedeem, currentPoints, setCurrentPoints } =
-		useContext(AppContext);
+	const { setRedeemId, setFetchRedeem, currentPoints, setCurrentPoints } = useContext(AppContext);
 
 	const handleRedeem = (id, cost, currentPoints) => {
 		setRedeemId(id);
 		setFetchRedeem(true);
-		const userNewPoints = currentPoints >= 0 && currentPoints - cost;
-		setCurrentPoints({ points: userNewPoints });
+		const userNewPoints = () => Math.max(currentPoints - cost, 0);
+		setCurrentPoints({ points: userNewPoints() });
 	};
 
 	return (
 		<Box
+			as='section'
 			width='80%'
 			display='grid'
 			gridTemplateColumns={[
