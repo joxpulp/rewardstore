@@ -32,83 +32,91 @@ function HistoryPage() {
 			animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.2 } }}
 			exit={{ x: '-100%', transition: { ease: 'easeInOut' } }}
 		>
-			<Box
-				as='section'
-				alignItems='center'
-				flexDirection={['column', 'column', 'row']}
-				width='80%'
-				padding='24px 0px'
-				borderBottom='1px solid #D9D9D9'
-			>
-				<Text
-					padding='0px 24px'
-					borderRight={['none', 'none', '1px solid #D9D9D9']}
-					color='#616161'
-				>
-					{`${currentItems} of ${totalItems} products`}
+			{historyList.length === 0 ? (
+				<Text color='#696969' padding='24px 24px'>
+					There are no redeemed products yet 🌝 🌚, go to the main page and redeem some 🤑
 				</Text>
-				<Box flex={1} justifyContent='center'>
-					<Title color='#838383'>User History of Redeemed Products</Title>
-				</Box>
-				<Box marginTop={['10px', null]}>
-					<AnimatePresence>
-						{currentPage > 1 && (
+			) : (
+				<>
+					<Box
+						as='section'
+						alignItems='center'
+						flexDirection={['column', 'column', 'row']}
+						width='80%'
+						padding='24px 0px'
+						borderBottom='1px solid #D9D9D9'
+					>
+						<Text
+							padding='0px 24px'
+							borderRight={['none', 'none', '1px solid #D9D9D9']}
+							color='#616161'
+						>
+							{`${currentItems} of ${totalItems} products`}
+						</Text>
+						<Box flex={1} justifyContent='center'>
+							<Title color='#838383'>User History of Redeemed Products</Title>
+						</Box>
+						<Box marginTop={['10px', null]}>
+							<AnimatePresence>
+								{currentPage > 1 && (
+									<Image
+										marginRight='10px'
+										pointer
+										onClick={() => prevPage()}
+										src={arrowLeft}
+										alt='arrowLeft'
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+										exit={{ opacity: 0 }}
+									/>
+								)}
+							</AnimatePresence>
 							<Image
-								marginRight='10px'
 								pointer
-								onClick={() => prevPage()}
-								src={arrowLeft}
-								alt='arrowLeft'
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								exit={{ opacity: 0 }}
+								onClick={() => nextPage()}
+								src={arrowRight}
+								alt='arrowRight'
 							/>
-						)}
-					</AnimatePresence>
-					<Image
-						pointer
-						onClick={() => nextPage()}
-						src={arrowRight}
-						alt='arrowRight'
-					/>
-				</Box>
-			</Box>
-			<HistoryList historyList={historyList} />
-			<Box
-				as='footer'
-				marginBottom='64px'
-				justifyContent='space-between'
-				alignItems='center'
-				width='80%'
-				padding='24px 0px'
-				borderBottom='1px solid #D9D9D9'
-			>
-				<Text padding='0px 24px' color='#616161'>
-					{`${currentItems} of ${totalItems} products`}
-				</Text>
-				<Box>
-					<AnimatePresence>
-						{currentPage > 1 && (
+						</Box>
+					</Box>
+					<HistoryList historyList={historyList} />
+					<Box
+						as='footer'
+						marginBottom='64px'
+						justifyContent='space-between'
+						alignItems='center'
+						width='80%'
+						padding='24px 0px'
+						borderBottom='1px solid #D9D9D9'
+					>
+						<Text padding='0px 24px' color='#616161'>
+							{`${currentItems} of ${totalItems} products`}
+						</Text>
+						<Box>
+							<AnimatePresence>
+								{currentPage > 1 && (
+									<Image
+										marginRight='10px'
+										pointer
+										onClick={() => prevPage()}
+										src={arrowLeft}
+										alt='arrowLeft'
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+										exit={{ opacity: 0 }}
+									/>
+								)}
+							</AnimatePresence>
 							<Image
-								marginRight='10px'
 								pointer
-								onClick={() => prevPage()}
-								src={arrowLeft}
-								alt='arrowLeft'
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								exit={{ opacity: 0 }}
+								onClick={() => nextPage()}
+								src={arrowRight}
+								alt='arrowRight'
 							/>
-						)}
-					</AnimatePresence>
-					<Image
-						pointer
-						onClick={() => nextPage()}
-						src={arrowRight}
-						alt='arrowRight'
-					/>
-				</Box>
-			</Box>
+						</Box>
+					</Box>
+				</>
+			)}
 		</Box>
 	);
 }

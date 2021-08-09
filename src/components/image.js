@@ -16,4 +16,5 @@ export const Image = styled(motion.img)`
 	padding: ${(props) => props.padding};
 	background: ${(props) => props.bg};
 	cursor: ${(props) => props.pointer && 'pointer'};
+	opacity: ${(props) => props.opacity}
 `;

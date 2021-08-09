@@ -15,7 +15,7 @@ function AppProvider({ children }) {
 		'Content-Type': 'application/json',
 		Accept: 'application/json',
 		Authorization:
-			'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRmMTU5MTY3Mjk2ZTAwMTk5NjQxMzYiLCJpYXQiOjE2MjUyMzI3ODV9.VtTEAHztgwB8UpIUoBf0pydVpIrEIRV8QoaqbXopJmQ',
+			'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTEwYTkwM2Q5ZmMzODAwMjFmNjM4NDIiLCJpYXQiOjE2Mjg0ODE3OTV9.S6hLJGnDXHgGJgSumGYKkKQ1IhQZcIGbgQOA7pKqIbQ',
 	};
 
 	const { data: user, loading: loadingUser } = useFetch(

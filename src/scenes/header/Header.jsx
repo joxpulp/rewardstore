@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
@@ -25,16 +25,18 @@ function Header() {
 		fetchHistory,
 	} = useContext(AppContext);
 
-	useEffect(() => {
-		user.fetched && setCurrentPoints({ points: user.data.points });
-		//eslint-disable-next-line
-	}, [user.fetched]);
+	const [imgLoading, setImgLoading] = useState(true);
 
 	useEffect(() => {
+		user.fetched && setCurrentPoints({ points: user.data.points });
 		points.fetched && setCurrentPoints({ points: points.data['New Points'] });
+		// eslint-disable-next-line
+	}, [user.fetched, points.fetched]);
+
+	useEffect(() => {
 		fetchHistory && setFetchHistory(false);
 		//eslint-disable-next-line
-	}, [points.fetched, fetchHistory]);
+	}, [fetchHistory]);
 
 	return (
 		<Box
@@ -123,12 +125,29 @@ function Header() {
 				</Box>
 			</Box>
 			<Box as='section' width='100%' position='relative' color='white'>
+				{imgLoading && (
+					<Box
+						position='absolute'
+						width='100%'
+						height='100%'
+						top='0'
+						right='0'
+						bottom='0'
+						left='0'
+						overflow='hidden'
+					>
+						<Skeleton width='100vw' height='100%' />
+					</Box>
+				)}
 				<Image
 					width='100%'
 					height='100%'
 					minWidth='100%'
+					onLoad={() => setImgLoading(false)}
 					src={banner}
 					alt='banner'
+					initial={{ opacity: 0 }}
+					animate={{ opacity: imgLoading ? 0 : 1 }}
 				/>
 				<Title
 					overflow='hidden'
@@ -136,6 +155,7 @@ function Header() {
 					fontSize={['40px', '72px']}
 					left={['20px', '20px', '132px']}
 					bottom={['20px', '20px', '46px']}
+					opacity={imgLoading ? '0' : '1'}
 				>
 					Electronics
 				</Title>
