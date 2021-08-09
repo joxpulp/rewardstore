@@ -17,9 +17,6 @@ function RedeemModal() {
 		<AnimatePresence exitBeforeEnter>
 			{fetchRedeem && (
 				<Box
-					initial={{ opacity: 0, transition: { duration: 0.1 } }}
-					animate={{ opacity: 1, transition: { duration: 0.1 } }}
-					exit={{ opacity: 0, transition: { duration: 0.1 } }}
 					position='fixed'
 					zIndex='2'
 					bg='#dadada7a'
@@ -29,6 +26,19 @@ function RedeemModal() {
 					alignItems='center'
 					glass
 					onClick={handleRedeem}
+					initial={{
+						opacity: 0,
+						transition: { duration: 0.2, ease: 'easeInOut' },
+					}}
+					animate={{
+						opacity: 1,
+						transition: { duration: 0.2, ease: 'easeInOut' },
+					}}
+					exit={{
+						opacity: 0,
+						y: 100,
+						transition: { duration: 0.2, ease: 'easeInOut' },
+					}}
 				>
 					{loadingRedeem ? (
 						<Box

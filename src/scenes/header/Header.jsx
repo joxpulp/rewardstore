@@ -1,16 +1,16 @@
 import { useContext, useEffect } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { Link } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
 import { AnimatePresence } from 'framer-motion';
 import { Title } from '../../components/title';
 import { Button } from '../../components/buttons';
 import { Image } from '../../components/image';
 import { Box } from '../../components/box';
-import Skeleton from 'react-loading-skeleton';
+import Points from '../points/Points';
 import aerolablogo from '../../assets/aerolab-logo.svg';
 import coin from '../../assets/icons/coin.svg';
 import banner from '../../assets/header-x1.png';
-import Points from '../points/Points';
 
 function Header() {
 	const {
@@ -51,7 +51,7 @@ function Header() {
 				flexDirection={['column', 'column', 'row']}
 				justify-content='space-between'
 				alignItems='center'
-				height={['auto', '80px']}
+				height={['auto', 'auto', '80px']}
 				padding={['10px 5px', '10px 5px', '0 42px']}
 				bg='white'
 			>
@@ -74,7 +74,7 @@ function Header() {
 					width='100%'
 					height='48px'
 					alignItems='center'
-					justifyContent={['space-between', 'flex-end']}
+					justifyContent={['space-between', 'space-between', 'flex-end']}
 					color='#616161'
 				>
 					{loadingUser ? (
