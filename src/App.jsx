@@ -20,7 +20,7 @@ function App() {
 						<Route exact path='/rewardstore'>
 							<ProductPage />
 						</Route>
-						<Route exact path='/userhistory'>
+						<Route path='/userhistory'>
 							<HistoryPage />
 						</Route>
 					</Switch>

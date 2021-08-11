@@ -49,10 +49,12 @@ function Header() {
 			<AnimatePresence>{pointsModal && <Points />}</AnimatePresence>
 			<Box
 				as='nav'
-				position='relative'
+				position='fixed'
+				zIndex='2'
 				flexDirection={['column', 'column', 'row']}
 				justify-content='space-between'
 				alignItems='center'
+				width='100%'
 				height={['auto', 'auto', '80px']}
 				padding={['10px 5px', '10px 5px', '0 42px']}
 				bg='white'
@@ -124,7 +126,14 @@ function Header() {
 					)}
 				</Box>
 			</Box>
-			<Box as='section' width='100%' position='relative' color='white'>
+			<Box
+				as='section'
+				width='100%'
+				position='relative'
+				color='white'
+				paddingTop={['110px', '110px', '80px']}
+				bg='red'
+			>
 				{imgLoading && (
 					<Box
 						position='absolute'

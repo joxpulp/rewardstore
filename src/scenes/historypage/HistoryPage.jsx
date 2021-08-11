@@ -7,6 +7,7 @@ import { Text } from '../../components/text';
 import { Image } from '../../components/image';
 import HistoryList from '../historylist/HistoryList';
 import { AnimatePresence } from 'framer-motion';
+import empty from '../../assets/icons/empty.svg'
 import arrowLeft from '../../assets/icons/arrow-left.svg';
 import arrowRight from '../../assets/icons/arrow-right.svg';
 
@@ -33,9 +34,17 @@ function HistoryPage() {
 			exit={{ x: '-100%', transition: { ease: 'easeInOut' } }}
 		>
 			{historyList.length === 0 ? (
-				<Text color='#696969' padding='24px 24px'>
-					There are no redeemed products yet 🌝 🌚, go to the main page and redeem some 🤑
-				</Text>
+				<Box
+					flexDirection='column'
+					alignItems='center'
+					margin='5% 5%'
+				>
+					<Image src={empty} width='70%' />
+					<Text color='#818181' marginTop='40px'>
+						There are no redeemed products yet 🌝 🌚, go to the main page and
+						redeem some 🤑
+					</Text>
+				</Box>
 			) : (
 				<>
 					<Box
