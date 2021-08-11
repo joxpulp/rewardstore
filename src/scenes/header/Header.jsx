@@ -132,7 +132,7 @@ function Header() {
 				position='relative'
 				color='white'
 				paddingTop={['110px', '110px', '80px']}
-				bg='red'
+				bg='#EDEDED'
 			>
 				{imgLoading && (
 					<Box
