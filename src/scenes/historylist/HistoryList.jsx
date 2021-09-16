@@ -1,4 +1,4 @@
-import { Box } from '../../components/box';
+import { Box } from '../../components/box/box';
 import HistoryCard from '../historycard/HistoryCard';
 
 function HistoryList({ historyList }) {

@@ -1,8 +1,8 @@
 import { useContext, useEffect } from 'react';
 import { AppContext } from '../../context/AppContext';
-import { Image } from '../../components/image';
-import { Box } from '../../components/box';
-import { Button } from '../../components/buttons';
+import { Image } from '../../components/image/image';
+import { Box } from '../../components/box/box';
+import { Button } from '../../components/buttongroup/buttons';
 import coin from '../../assets/icons/coin.svg';
 
 function ButtonsPoints() {

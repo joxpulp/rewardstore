@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { usePagination } from '../../hooks/usePagination';
 import { AppContext } from '../../context/AppContext';
-import { Box } from '../../components/box';
-import { Title } from '../../components/title';
-import { Text } from '../../components/text';
-import { Image } from '../../components/image';
+import { Title } from '../../components/title/title';
+import { Image } from '../../components/image/image';
+import { Box } from '../../components/box/box';
+import { Text } from '../../components/text/text';
 import HistoryList from '../historylist/HistoryList';
 import { AnimatePresence } from 'framer-motion';
 import empty from '../../assets/icons/empty.svg'

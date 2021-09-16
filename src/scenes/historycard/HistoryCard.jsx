@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box } from '../../components/box';
-import { Image } from '../../components/image';
-import { Text } from '../../components/text';
+import { Box } from '../../components/box/box';
+import { Image } from '../../components/image/image';
+import { Text } from '../../components/text/text';
 
 function HistoryCard({ productImg, productCat, productName, productCost }) {
 	return (

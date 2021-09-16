@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Box } from '../../components/box';
-import { Image } from '../../components/image';
-import { Text } from '../../components/text';
-import { Button } from '../../components/buttons';
+import { Box } from '../../components/box/box';
+import { Image } from '../../components/image/image';
+import { Text } from '../../components/text/text';
+import { Button } from '../../components/buttongroup/buttons';
 import buyblue from '../../assets/icons/buy-blue.svg';
 import buywhite from '../../assets/icons/buy-white.svg';
 import coin from '../../assets/icons/coin.svg';

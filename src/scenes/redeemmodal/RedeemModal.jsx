@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
-import { Box } from '../../components/box';
-import { Text } from '../../components/text';
-import { Title } from '../../components/title';
+import { Box } from '../../components/box/box';
+import { Text } from '../../components/text/text';
+import { Title } from '../../components/title/title';
 import { AnimatePresence } from 'framer-motion';
 
 function RedeemModal() {

@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
-import { Box } from '../../components/box';
-import { Button } from '../../components/buttons';
-import { Text } from '../../components/text';
+import { Box } from '../../components/box/box';
+import { Button } from '../../components/buttongroup/buttons';
+import { Text } from '../../components/text/text';
 import ButtonsPoints from '../buttonspoints/ButtonsPoints';
 
 function Points() {
@@ -10,7 +10,7 @@ function Points() {
 
 	return (
 		<Box
-			position='absolute'
+			position='fixed'
 			width='100%'
 			height={['100%']}
 			top={['115px', '115px', '85px']}

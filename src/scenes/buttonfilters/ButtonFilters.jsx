@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box } from '../../components/box';
-import { ButtonGP, ButtonGroup } from '../../components/ButtonGroup';
+import { Box } from '../../components/box/box';
+import { ButtonGP, ButtonGroup } from '../../components/buttongroup/ButtonGroup';
 
 
 function ButtonFilters({sortElements}) {
